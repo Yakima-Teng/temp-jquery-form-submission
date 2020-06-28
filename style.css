@@ -1,0 +1,10 @@
+.app {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+}
+.app.show {
+    transition: 300ms all linear 0ms;
+    opacity: 1;
+    visibility: visible;
+}
