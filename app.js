@@ -6,6 +6,6 @@ var app = new Vue({
 
     },
     created: function () {
-        console.log('created')
+        $('#app').addClass('show')
     },
 })
