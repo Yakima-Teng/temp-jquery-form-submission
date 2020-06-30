@@ -2,9 +2,27 @@
     display: block;
     opacity: 0;
     visibility: hidden;
+    padding: 10px;
+    background-color: #ededed;
 }
 .app.show {
     transition: 300ms all linear 0ms;
     opacity: 1;
     visibility: visible;
+}
+.pageContainer {
+    display: block;
+    background-color: #ffffff;
+    padding: 10px;
+}
+.pageHeader {
+    display: block;
+    border-left: 6px solid #000000;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 6px;
+    font-size: 16px;
+}
+.pageBody {
+    display: block;
 }

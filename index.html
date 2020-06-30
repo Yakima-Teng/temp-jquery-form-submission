@@ -2,14 +2,106 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>权限信息</title>
-    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./assets/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <div id="app" class="app">
-    <div class="pageHeader">
+    <div class="pageContainer">
+        <div class="pageHeader">权限信息</div>
+        <div class="pageBody">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">appid</label>
+                    <div class="layui-input-inline">
+                        <input v-model="appid" type="text" name="title" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                    <div @click="appid = ''" class="layui-form-mid layui-word-aux btnReset">重置</div>
+                    <div @click="toCopyText(appid)" class="layui-form-mid layui-word-aux btnCopy">复制</div>
 
+                    <label class="layui-form-label">appsecret</label>
+                    <div class="layui-input-inline">
+                        <input v-model="appsecret" type="text" name="title" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                    <div @click="appsecret = ''" class="layui-form-mid layui-word-aux btnReset">重置</div>
+                    <div @click="toCopyText(appsecret)" class="layui-form-mid layui-word-aux btnCopy">复制</div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">特殊权限</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" value="1" name="special[1]" lay-skin="primary" title="特殊接口的名称" v-model="specials" :checked="specials.indexOf('1') !== -1">
+                        <input type="checkbox" value="2" name="special[2]" lay-skin="primary" title="特殊接口的名称" v-model="specials">
+                        <input type="checkbox" value="3" name="special[3]" lay-skin="primary" title="特殊接口的名称" v-model="specials">
+                    </div>
+                    <div class="layui-input-block">
+                        <input type="checkbox" value="4" name="special[4]" lay-skin="primary" title="特殊接口的名称">
+                        <input type="checkbox" value="5" name="special[5]" lay-skin="primary" title="特殊接口的名称" checked>
+                        <input type="checkbox" value="6" name="special[6]" lay-skin="primary" title="特殊接口的名称" checked>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">限定商户</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="limit" value="1" title="所有商户可用">
+                    </div>
+                    <div class="layui-input-block">
+                        <input type="radio" name="limit" value="2" title="指定商户类型可用">
+                    </div>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="special[4]" title="k12平台" checked>
+                        <input type="checkbox" name="special[5]" title="政企云" checked>
+                        <input type="checkbox" name="special[6]" title="N8" checked>
+                        <input type="checkbox" name="special[6]" title="混合商户" checked>
+                        <input type="checkbox" name="special[6]" title="新开普" checked>
+                    </div>
+                    <div class="layui-input-block">
+                        <input type="radio" name="limit" value="3" title="指定个别商户可用">
+                    </div>
+                    <div class="layui-input-block">
+                        <div class="layui-row">
+                            <div class="layui-col-xs6 cardBox">
+                                <header class="cardHeader">搜索结果</header>
+                                <article class="cardBody">
+                                    <div class="cardBodyHeader">
+                                        <input type="text" class="fieldText" placeholder="输入商户名模糊搜索">
+                                        <span class="btnSearch">搜索</span>
+                                    </div>
+                                    <div class="cardDetails">
+                                        <div v-for="item in searchResult" class="line">
+                                            <span class="name">{{item.name}}</span>
+                                            <span @click="toAddShop(item.id)" v-if="item.added === '0'" class="btnText">添加</span>
+                                            <span v-if="item.added === '1'" class="normalText">已添加</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="layui-col-xs6 cardBox">
+                                <header class="cardHeader">已选商户</header>
+                                <article class="cardBody">
+                                    <div class="cardDetails">
+                                        <div v-for="item in selectShops" class="line">
+                                            <span class="name">{{item.name}}</span>
+                                            <span @click="toDeleteShop(item.id)" class="btnText">删除</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
