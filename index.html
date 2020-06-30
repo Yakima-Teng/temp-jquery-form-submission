@@ -16,65 +16,70 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">appid</label>
                     <div class="layui-input-inline">
-                        <input v-model="appid" type="text" name="title" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <input id="appid" type="text" name="appid" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                     </div>
-                    <div @click="appid = ''" class="layui-form-mid layui-word-aux btnReset">重置</div>
-                    <div @click="toCopyText(appid)" class="layui-form-mid layui-word-aux btnCopy">复制</div>
+                    <div class="layui-form-mid layui-word-aux btnReset">重置</div>
+                    <div data-clipboard-target="#appid" class="layui-form-mid layui-word-aux btnCopy">复制</div>
 
                     <label class="layui-form-label">appsecret</label>
                     <div class="layui-input-inline">
-                        <input v-model="appsecret" type="text" name="title" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <input id="appsecret" type="text" name="appsecret" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                     </div>
-                    <div @click="appsecret = ''" class="layui-form-mid layui-word-aux btnReset">重置</div>
-                    <div @click="toCopyText(appsecret)" class="layui-form-mid layui-word-aux btnCopy">复制</div>
+                    <div class="layui-form-mid layui-word-aux btnReset">重置</div>
+                    <div data-clipboard-target="#appsecret" class="layui-form-mid layui-word-aux btnCopy">复制</div>
                 </div>
 
-                <div class="layui-form-item">
+                <div class="layui-form-item specials">
                     <label class="layui-form-label">特殊权限</label>
                     <div class="layui-input-block">
-                        <input type="checkbox" value="1" name="special[1]" lay-skin="primary" title="特殊接口的名称" v-model="specials" :checked="specials.indexOf('1') !== -1">
-                        <input type="checkbox" value="2" name="special[2]" lay-skin="primary" title="特殊接口的名称" v-model="specials">
-                        <input type="checkbox" value="3" name="special[3]" lay-skin="primary" title="特殊接口的名称" v-model="specials">
-                    </div>
-                    <div class="layui-input-block">
-                        <input type="checkbox" value="4" name="special[4]" lay-skin="primary" title="特殊接口的名称">
-                        <input type="checkbox" value="5" name="special[5]" lay-skin="primary" title="特殊接口的名称" checked>
-                        <input type="checkbox" value="6" name="special[6]" lay-skin="primary" title="特殊接口的名称" checked>
+                        <input lay-filter="specials" type="checkbox" name="special[1]" lay-skin="primary" title="特殊接口的名称" checked>
+                        <input lay-filter="specials" type="checkbox" name="special[2]" lay-skin="primary" title="特殊接口的名称">
+                        <input lay-filter="specials" type="checkbox" name="special[3]" lay-skin="primary" title="特殊接口的名称">
+                        <input lay-filter="specials" type="checkbox" name="special[4]" lay-skin="primary" title="特殊接口的名称">
+                        <input lay-filter="specials" type="checkbox" name="special[5]" lay-skin="primary" title="特殊接口的名称">
+                        <input lay-filter="specials" type="checkbox" name="special[6]" lay-skin="primary" title="特殊接口的名称">
                     </div>
                 </div>
 
-                <div class="layui-form-item">
+                <div class="layui-form-item limits">
                     <label class="layui-form-label">限定商户</label>
                     <div class="layui-input-block">
-                        <input type="radio" name="limit" value="1" title="所有商户可用">
+                        <input type="radio" name="limit" value="1" title="所有商户可用" checked>
                     </div>
                     <div class="layui-input-block">
                         <input type="radio" name="limit" value="2" title="指定商户类型可用">
                     </div>
                     <div class="layui-input-block">
-                        <input type="checkbox" name="special[4]" title="k12平台" checked>
-                        <input type="checkbox" name="special[5]" title="政企云" checked>
-                        <input type="checkbox" name="special[6]" title="N8" checked>
-                        <input type="checkbox" name="special[6]" title="混合商户" checked>
-                        <input type="checkbox" name="special[6]" title="新开普" checked>
+                        <input type="checkbox" name="limit[1]" title="k12平台" checked>
+                        <input type="checkbox" name="limit[2]" title="政企云" checked>
+                        <input type="checkbox" name="limit[3]" title="N8" checked>
+                        <input type="checkbox" name="limit[4]" title="混合商户" checked>
+                        <input type="checkbox" name="limit[5]" title="新开普" checked>
                     </div>
                     <div class="layui-input-block">
                         <input type="radio" name="limit" value="3" title="指定个别商户可用">
                     </div>
                     <div class="layui-input-block">
-                        <div class="layui-row">
+                        <div class="layui-row layui-col-space25">
                             <div class="layui-col-xs6 cardBox">
                                 <header class="cardHeader">搜索结果</header>
                                 <article class="cardBody">
                                     <div class="cardBodyHeader">
                                         <input type="text" class="fieldText" placeholder="输入商户名模糊搜索">
-                                        <span class="btnSearch">搜索</span>
+                                        <span class="layui-btn btnSearch">搜索</span>
                                     </div>
                                     <div class="cardDetails">
-                                        <div v-for="item in searchResult" class="line">
-                                            <span class="name">{{item.name}}</span>
-                                            <span @click="toAddShop(item.id)" v-if="item.added === '0'" class="btnText">添加</span>
-                                            <span v-if="item.added === '1'" class="normalText">已添加</span>
+                                        <div class="line">
+                                            <span class="name">name</span>
+                                            <span class="normalText show">已添加</span>
+                                        </div>
+                                        <div class="line">
+                                            <span class="name">name</span>
+                                            <span class="layui-btn layui-btn-xs layui-btn-radius layui-btn-primary btnText show">添加</span>
+                                        </div>
+                                        <div class="line">
+                                            <span class="name">name</span>
+                                            <span class="layui-btn layui-btn-xs layui-btn-radius layui-btn-primary btnText show">添加</span>
                                         </div>
                                     </div>
                                 </article>
@@ -83,9 +88,17 @@
                                 <header class="cardHeader">已选商户</header>
                                 <article class="cardBody">
                                     <div class="cardDetails">
-                                        <div v-for="item in selectShops" class="line">
-                                            <span class="name">{{item.name}}</span>
-                                            <span @click="toDeleteShop(item.id)" class="btnText">删除</span>
+                                        <div class="line">
+                                            <span class="name">name</span>
+                                            <span class="layui-btn layui-btn-xs layui-btn-radius layui-btn-primary btnText show">删除</span>
+                                        </div>
+                                        <div class="line">
+                                            <span class="name">name</span>
+                                            <span class="layui-btn layui-btn-xs layui-btn-radius layui-btn-primary btnText show">删除</span>
+                                        </div>
+                                        <div class="line">
+                                            <span class="name">name</span>
+                                            <span class="layui-btn layui-btn-xs layui-btn-radius layui-btn-primary btnText show">删除</span>
                                         </div>
                                     </div>
                                 </article>
@@ -107,7 +120,7 @@
 
 <script src="./assets/jquery.min.js"></script>
 <script src="./assets/layui/layui.all.js"></script>
-<script src="./assets/vue.min.js"></script>
+<script src="./assets/clipboard.min.js"></script>
 <script src="./app.js"></script>
 </body>
 </html>

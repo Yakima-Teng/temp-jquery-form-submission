@@ -26,3 +26,116 @@
 .pageBody {
     display: block;
 }
+
+.btnReset, .btnCopy {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+.btnReset:active, .btnCopy:active {
+    text-decoration: underline;
+}
+.cardBox {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+.cardBox .cardHeader {
+    display: block;
+    height: 26px;
+    font-size: 12px;
+    color: #333333;
+    line-height: 26px;
+}
+.cardBox .cardBody {
+    display: block;
+    border: 1px solid #dedede;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 6px;
+}
+.cardBox .cardBody .cardBodyHeader {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.cardBox .cardBody .cardBodyHeader .fieldText {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 6px;
+    line-height: normal;
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    color: #666666;
+}
+.cardBox .cardBody .cardBodyHeader .btnSearch {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #666666;
+    border-radius: 3px;
+}
+.cardBox .cardBody .cardDetails {
+    display: block;
+    padding: 6px 0;
+}
+.cardBox .cardBody .cardDetails .line {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+.cardBox .cardBody .cardDetails .line:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.cardBox .cardBody .cardDetails .name {
+    float: left;
+    font-size: 12px;
+    color: #666666;
+    line-height: 20px;
+    margin-top: 5px;
+}
+
+.cardBox .cardBody .cardDetails .normalText {
+    display: none;
+    float: right;
+    font-size: 12px;
+    color: #666666;
+    line-height: 20px;
+    margin-top: 5px;
+}
+
+.cardBox .cardBody .cardDetails .btnText {
+    display: none;
+    float: right;
+    font-size: 12px;
+    height: 20px;
+    line-height: 18px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.cardBox .cardBody .cardDetails .show {
+    display: block;
+}
