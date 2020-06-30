@@ -1,10 +1,11 @@
+var $app = $('#app')
 var form = layui.form;
 
 // 渲染表单
 form.render() // 如果有动态通过js修改过dom结构，记得重新调用下form.render()
 
 // 渲染表单完毕后显示页面
-$('#app').addClass('show')
+$app.addClass('show')
 
 // 重置字段
 $('.btnReset').click(function () {
@@ -42,3 +43,15 @@ form.on('submit(formDemo)', function(data){
     })
     return false;
 });
+
+
+$app
+    .on('click', '.btnAdd', function () {
+        layer.msg('点击了添加按钮')
+    })
+    .on('click', '.btnDelete', function () {
+        layer.msg('点击了删除按钮')
+    })
+    .on('click', '.btnSearch', function () {
+        layer.msg('搜索框内输入的文字为：' + $('#fieldSearch').val())
+    })
